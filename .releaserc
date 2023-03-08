@@ -1,0 +1,51 @@
+{
+  "branches": ["main"],
+  "plugins": [
+    ["@semantic-release/commit-analyzer", {
+      "preset": "angular",
+      "releaseRules": [
+        {"type": "refactor", "release": "patch"},
+        {"type": "style", "release": "patch"},
+        {"type": "chore", "release": "patch"},
+        {"type": "fix", "release": "patch"},
+        {"type": "feat", "release": "minor"},
+        {"type": "feature", "release": "minor"},
+        {"type": "BREAKING", "release": "major"},
+        {"type": "build", "release": false},
+        {"type": "docs", "release": false},
+        {"type": "test", "release": false},
+        {"type": "perf", "release": false},
+        {"type": "ci", "release": false},
+      ]
+    }],
+    ["@semantic-release/release-notes-generator", {
+     "config": "conventional-changelog-conventionalcommits",
+     "presetConfig": {
+     "types": [
+        {"type": "refactor", "section": "Minor Changes"},
+        {"type": "style", "section": "Minor Changes"},
+        {"type": "chore", "section": "Minor Changes"},
+        {"type": "fix", "section": "Minor Changes"},
+        {"type": "feat", "section": "Features"},
+        {"type": "feature", "section": "Features"},
+        {"type": "BREAKING", "section": "Major Changes"},
+        {"type": "build", "hidden": true},
+        {"type": "docs", "hidden": true},
+        {"type": "perf", "hidden": true},
+        {"type": "test", "hidden": true},
+        {"type": "ci", "hidden": true},
+]}
+    }],
+    [
+      "@semantic-release/changelog",
+      {
+        changelogFile: "CHANGELOG.md"
+      }
+    ],
+    "@semantic-release/github",
+    ["@semantic-release/git", {
+      "assets": ["*"],
+      "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
+    }]
+  ]
+}
