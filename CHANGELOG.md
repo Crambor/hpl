@@ -1,3 +1,10 @@
+## [0.1.3](https://github.com/Crambor/hpl/compare/v0.1.2...v0.1.3) (2023-03-08)
+
+
+### Minor Changes
+
+* attempt multi-arch build ([245ba82](https://github.com/Crambor/hpl/commit/245ba82e69df7ccac3de05fa8400622c26694163))
+
 ## [0.1.2](https://github.com/Crambor/hpl/compare/v0.1.1...v0.1.2) (2023-03-08)
 
 
