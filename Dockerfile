@@ -21,4 +21,6 @@ RUN ./configure
 RUN make -j
 WORKDIR "/hpl/testing"
 
+COPY HPL.dat .
+
 CMD ["/bin/bash"]
