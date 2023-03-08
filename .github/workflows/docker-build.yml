@@ -1,0 +1,39 @@
+name: Docker Build and Publish to Registry
+
+env:
+  IMAGE: crambor/hpl
+  REGISTRY: ghcr.io
+  USERNAME: crambor
+  PASSWORD: ${{ secrets.ACCESS_TOKEN }}
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  build-and-publish:
+    name: Build and Publish to Registry
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Fetch latest tag
+        run: echo "LATEST_TAG=$(git describe --tags --abbrev=0)" >> $GITHUB_ENV
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ env.USERNAME }}
+          password: ${{ env.PASSWORD }}
+
+      - name: Build and Push Docker Image
+        uses: docker/build-push-action@v3
+        with:
+          push: true
+          tags: |
+            ${{ env.REGISTRY }}/${{ env.IMAGE }}:${{ env.LATEST_TAG }}
+            ${{ env.REGISTRY }}/${{ env.IMAGE }}:latest
