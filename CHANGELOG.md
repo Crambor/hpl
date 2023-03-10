@@ -1,3 +1,10 @@
+## [0.1.6](https://github.com/Crambor/hpl/compare/v0.1.5...v0.1.6) (2023-03-10)
+
+
+### Minor Changes
+
+* added mpi image ([001bc08](https://github.com/Crambor/hpl/commit/001bc089600df04b79364032b4af54cb45da3505))
+
 ## [0.1.5](https://github.com/Crambor/hpl/compare/v0.1.4...v0.1.5) (2023-03-10)
 
 
