@@ -1,3 +1,10 @@
+## [0.1.5](https://github.com/Crambor/hpl/compare/v0.1.4...v0.1.5) (2023-03-10)
+
+
+### Minor Changes
+
+* edited hpl dat file ([60b12f8](https://github.com/Crambor/hpl/commit/60b12f8803ac18a8c819637509aa3a5a8d5d4a31))
+
 ## [0.1.4](https://github.com/Crambor/hpl/compare/v0.1.3...v0.1.4) (2023-03-08)
 
 
