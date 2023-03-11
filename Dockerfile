@@ -3,29 +3,35 @@ FROM mpioperator/openmpi-builder as builder
 
 
 # set contextual labels
-RUN apt update
-RUN apt install wget -y
-RUN apt install build-essential gcc -y
-RUN apt install libopenblas-dev libopenmpi-dev -y 
-RUN apt install openssh-server -y
+LABEL org.opencontainers.image.source="https://github.com/crambor/hpl"
+LABEL org.opencontainers.image.description="Container Image for High Performance LINPACK"
+
+# include dependencies
+RUN apt update && apt install -y \
+    wget \
+    build-essential \
+    gcc \
+    libopenblas-dev \
+    libopenmpi-dev
 
 # download HPL
-RUN wget https://www.netlib.org/benchmark/hpl/hpl-2.3.tar.gz
-RUN tar -xpf hpl-2.3.tar.gz
-RUN mv hpl-2.3 hpl
+RUN wget https://www.netlib.org/benchmark/hpl/hpl-2.3.tar.gz && \
+    tar -xzf hpl-2.3.tar.gz && \
+    mv hpl-2.3 hpl
 
 # compile HPL
 WORKDIR "hpl"
-RUN ./configure
-RUN make -j4
-# CMD ["/bin/bash"]
+RUN ./configure && make -j$(nproc)
 
 FROM mpioperator/openmpi
 
-RUN apt update
-RUN apt install wget -y
-RUN apt install build-essential gcc -y
-RUN apt install libopenblas-dev libopenmpi-dev -y 
+# include dependencies
+RUN apt update && apt install -y \
+    wget \
+    build-essential \
+    gcc \
+    libopenblas-dev \
+    libopenmpi-dev
 
 
 COPY --from=builder /hpl /home/mpiuser/hpl
