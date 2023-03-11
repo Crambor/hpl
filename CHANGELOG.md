@@ -1,3 +1,10 @@
+## [0.2.0](https://github.com/Crambor/hpl/compare/v0.1.7...v0.2.0) (2023-03-11)
+
+
+### Features
+
+* optimise dockerfile ([d9ee348](https://github.com/Crambor/hpl/commit/d9ee348208afaf63b9a7dddae269d1ede5e16be0))
+
 ## [0.1.7](https://github.com/Crambor/hpl/compare/v0.1.6...v0.1.7) (2023-03-11)
 
 
