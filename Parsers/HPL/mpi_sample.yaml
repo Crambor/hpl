@@ -1,0 +1,49 @@
+# kubectl create configmap config --from-file HPL.dat
+
+apiVersion: kubeflow.org/v2beta1
+kind: MPIJob
+metadata:
+  name: hpl-mpi
+spec:
+  slotsPerWorker: 4
+  runPolicy:
+    cleanPodPolicy: Running
+  mpiReplicaSpecs:
+    Launcher:
+      replicas: 1
+      template:
+        spec:
+          containers:
+          - image: ghcr.io/crambor/hpl:v0.1.7
+            name: hpl
+            command:
+            - mpirun
+            args:
+            - --allow-run-as-root
+            - -np
+            - "16"
+            - ./xhpl
+
+    Worker:
+      replicas: 4
+      template:
+        spec:
+          containers:
+          - image: ghcr.io/crambor/hpl:v0.1.7
+            name: hpl
+            volumeMounts:
+            - name: "config"
+              mountPath: "/home/mpiuser/hpl/testing/HPL.dat"
+              subPath: "HPL.dat"
+    
+            resources:
+              requests:
+                cpu: 4
+              limits:
+                cpu: 4
+                memory: 40Gi
+
+          volumes:
+          - name: "config"
+            configMap:
+              name: "config"
