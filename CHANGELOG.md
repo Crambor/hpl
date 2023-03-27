@@ -1,3 +1,10 @@
+## [0.2.1](https://github.com/Crambor/hpl/compare/v0.2.0...v0.2.1) (2023-03-27)
+
+
+### Minor Changes
+
+* Added OpenMP capability with intel xhost optimisation ([af3b0b5](https://github.com/Crambor/hpl/commit/af3b0b52ba6563a101cd0a8b025f91d9187810a2))
+
 ## [0.2.0](https://github.com/Crambor/hpl/compare/v0.1.7...v0.2.0) (2023-03-11)
 
 
