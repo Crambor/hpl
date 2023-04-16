@@ -1,3 +1,10 @@
+## [0.2.2](https://github.com/Crambor/hpl/compare/v0.2.1...v0.2.2) (2023-04-16)
+
+
+### Minor Changes
+
+* hpcg_file_change ([159faca](https://github.com/Crambor/hpl/commit/159faca4bc447fe07fe8373e980758398dd7c5c9))
+
 ## [0.2.1](https://github.com/Crambor/hpl/compare/v0.2.0...v0.2.1) (2023-03-27)
 
 
