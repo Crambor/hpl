@@ -1,0 +1,25 @@
+Number of nodes
+2
+Autoscaling 
+Off
+Node zones
+europe-west1-d
+Nodes
+Image type
+Container-Optimized OS with containerd (cos_containerd)
+Machine type
+c2d-highcpu-112
+CPU platform
+AMD Milan
+Boot disk type
+Balanced persistent disk
+Boot disk size (per node)
+100 GB
+Boot disk encryption
+Google-managed
+Provisioning Model
+Standard
+Threads per core
+1
+Compact placement 
+Disabled

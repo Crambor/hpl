@@ -1,0 +1,61 @@
+/home/xdrs67/Project/HPCG/backup/hpcg-3.1/testdir/bin
+HPCG benchmark input file
+Sandia National Laboratories; University of Tennessee, Knoxville
+128 128 128
+6000
+~                                                                               
+~                                                                               
+~                                                                               
+
+
+
+
+[xdrs67@login1.ham8 bin]$ cat jobscript.slm 
+#!/bin/bash 
+
+# -- Email Details
+
+#SBATCH --mail-user=rohan.jain@durham.ac.uk
+#SBATCH --mail-type=ALL
+
+
+# -- Processing Specs -- 
+
+# -N : number of nodes
+# -n : number of cores (this is intotal not just per core)
+# -c: number of mpi ranks per core (hardware threads?)
+# -ntasks-per-socket = 64 cores per socket
+
+# ---
+
+# -n: number of mpiranks 
+# -c: number of cores per mpirank
+# -N: number of Nodes
+
+
+
+
+
+#SBATCH -p multi
+#SBATCH -N 16
+#SBATCH -n 2048
+#SBATCH -c 1
+#SBATCH -t 03:00:00
+#SBATCH --ntasks-per-socket=64
+#SBATCH --mem=0
+
+# Filename
+# module load gcc openblas openmpi
+module load "intel/2022.2" openblas openmpi
+
+file_name=hpcg-core2Node1.out
+backup_file_name=backup_results/filename_$(date '+%Y-%m-%d_%H-%M-%S').out
+
+# Running Command
+mpirun --allow-run-as-root --bind-to-core  -np 2048 ./xhpcg
+# cp ${file_name} ${backup_file_name}
+
+
+
+[xdrs67@login1.ham8 bin]$ 
+
