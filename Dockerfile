@@ -1,7 +1,7 @@
 
 
 # HPCG FILE
-FROM mpioperator/openmpi-builder as builder
+FROM mpioperator/intel-builder as builder
 # FROM mpioperator/openmpi
 
 # set contextual labels
@@ -25,15 +25,36 @@ RUN mkdir hello_world
 WORKDIR "hpcg-3.0/setup"
 # RUN cp Make.MPI_GCC_OMP Make.mpigccomp
 RUN cp Make.Linux_MPI Make.linuxmpi
+# COPY "Make.linuxmpi_hpcg" .
+
 
 WORKDIR "../"
 RUN mkdir build
 WORKDIR "build"
 RUN ../configure linuxmpi && make
-# WORKDIR "../"
+WORKDIR "../../../"
+
+RUN wget https://www.netlib.org/benchmark/hpl/hpl-2.3.tar.gz && \
+    tar -xzf hpl-2.3.tar.gz && \
+    mv hpl-2.3 hpl
 
 
-FROM mpioperator/openmpi
+# compile HPL
+WORKDIR "hpl"
+# RUN ./configure && make -j$(nproc)
+
+COPY "Make.Linux_Intel64" .
+
+RUN ./configure && make arch=intel64 -j$(nproc)
+
+
+
+
+
+
+
+
+FROM mpioperator/intel
 
 
 # include dependencies
@@ -47,7 +68,18 @@ RUN apt update && apt install -y \
 
 
 COPY --from=builder /hpcg-3.0 /home/mpiuser/hpcg-3.0
+COPY --from=builder /hpl /home/mpiuser/hpl
 WORKDIR "/home/mpiuser/hpcg-3.0/build/bin"
+COPY hpcg.dat .
 
+WORKDIR "/home/mpiuser/hpl/testing"
+COPY HPL.dat .
+
+WORKDIR "/home/mpiuser"
 
 CMD ["/bin/bash"]
+
+
+
+# mpirun --allow-run-as-root -np 1 hpcg-3.0/build/bin/xhpcg 
+# cd hpl/testing && mpirun -np 1  ./xhpl 
