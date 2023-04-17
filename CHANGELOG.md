@@ -1,3 +1,10 @@
+## [0.2.3](https://github.com/Crambor/hpl/compare/v0.2.2...v0.2.3) (2023-04-17)
+
+
+### Minor Changes
+
+* hpl&hpcgintel ([31176f9](https://github.com/Crambor/hpl/commit/31176f96f9163212248de49bc44b4232caeda976))
+
 ## [0.2.2](https://github.com/Crambor/hpl/compare/v0.2.1...v0.2.2) (2023-04-16)
 
 
