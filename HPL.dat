@@ -2,17 +2,10 @@ HPLinpack benchmark input file
 Innovative Computing Laboratory, University of Tennessee
 HPL.out      output file name (if any) 
 6            device out (6=stdout,7=stderr,file)
-<<<<<<< HEAD
-1           # of problems sizes (N)
-10000	     Ns
-1            # of NBs
-192          NBs
-=======
 3            # of problems sizes (N)
-2000 4000 6000	     Ns
+1000 4000 6000	     Ns
 2            # of NBs
 100 192          NBs
->>>>>>> parent of af3b0b5 (chore: Added OpenMP capability with intel xhost optimisation)
 0            PMAP process mapping (0=Row-,1=Column-major)
 1            # of process grids (P x Q)
 1           Ps
