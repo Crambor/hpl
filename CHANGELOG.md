@@ -1,3 +1,10 @@
+## [0.2.5](https://github.com/Crambor/hpl/compare/v0.2.4...v0.2.5) (2023-04-18)
+
+
+### Minor Changes
+
+* original_buildup ([7b20067](https://github.com/Crambor/hpl/commit/7b2006783e8760fcc163c15af7b07d9c878e4566))
+
 ## [0.2.4](https://github.com/Crambor/hpl/compare/v0.2.3...v0.2.4) (2023-04-18)
 
 
