@@ -1,3 +1,10 @@
+## [0.2.4](https://github.com/Crambor/hpl/compare/v0.2.3...v0.2.4) (2023-04-18)
+
+
+### Minor Changes
+
+* openmpi_base_Image ([3210f42](https://github.com/Crambor/hpl/commit/3210f422fd667d31ae804c387c9fb6c3fdbf4661))
+
 ## [0.2.3](https://github.com/Crambor/hpl/compare/v0.2.2...v0.2.3) (2023-04-17)
 
 
