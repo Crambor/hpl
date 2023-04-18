@@ -1,13 +1,14 @@
 
 
 # HPCG FILE
-FROM mpioperator/intel-builder as builder
-# FROM mpioperator/openmpi
+
+# FROM mpioperator/intel-builder as builder
+FROM mpioperator/openmpi-builder as builder
 
 # set contextual labels
-# LABEL org.opencontainers.image.source="https://github.com/crambor/hpl"
-# LABEL org.opencontainers.image.description="Container Image for High Performance LINPACK"
-
+LABEL org.opencontainers.image.source="https://github.com/crambor/hpl"
+LABEL org.opencontainers.image.description="Container Image for High Performance LINPACK"
+# 
 # include dependencies
 RUN apt update && apt install -y \
     wget \
@@ -25,7 +26,9 @@ RUN mkdir hello_world
 WORKDIR "hpcg-3.0/setup"
 # RUN cp Make.MPI_GCC_OMP Make.mpigccomp
 RUN cp Make.Linux_MPI Make.linuxmpi
-# COPY "Make.linuxmpi_hpcg" .
+# RUN cp Make.MPI_GCC_OMP Make.mpi_gcc_omp
+# RUN cp Make.MPI_ICPC_OMP Make.mpi_icpc_omp
+# COPY "Make.mpi_icpc_omp_rons" .
 
 
 WORKDIR "../"
@@ -54,7 +57,9 @@ RUN ./configure && make arch=intel64 -j$(nproc)
 
 
 
-FROM mpioperator/intel
+# FROM mpioperator/intel
+FROM mpioperator/openmpi
+
 
 
 # include dependencies
@@ -83,3 +88,5 @@ CMD ["/bin/bash"]
 
 # mpirun --allow-run-as-root -np 1 hpcg-3.0/build/bin/xhpcg 
 # cd hpl/testing && mpirun -np 1  ./xhpl 
+
+# cd hpl/testing/ && mpirun --bind-to core --allow-run-as-root -np 1 ./xhpl
