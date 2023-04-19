@@ -1,3 +1,10 @@
+## [0.2.10](https://github.com/Crambor/hpl/compare/v0.2.9...v0.2.10) (2023-04-19)
+
+
+### Minor Changes
+
+* removed_mpi_download ([6d7b190](https://github.com/Crambor/hpl/commit/6d7b190de98b86e9242c1f82b32fd7d834393193))
+
 ## [0.2.9](https://github.com/Crambor/hpl/compare/v0.2.8...v0.2.9) (2023-04-18)
 
 
