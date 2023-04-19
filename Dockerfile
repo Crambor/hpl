@@ -11,8 +11,8 @@ RUN apt update && apt install -y \
     wget \
     build-essential \
     gcc \
-    libopenblas-dev 
-    # libopenmpi-dev
+    libopenblas-dev \
+    libopenmpi-dev
 
 # download HPL
 RUN wget https://www.netlib.org/benchmark/hpl/hpl-2.3.tar.gz && \
@@ -22,10 +22,9 @@ RUN wget https://www.netlib.org/benchmark/hpl/hpl-2.3.tar.gz && \
 # compile HPL
 WORKDIR "hpl"
 
-# COPY "Make.Linux_Intel64" .
+COPY "Make.Linux_Intel64" .
 
-# RUN ./configure && make arch=intel64 -j$(nproc)
-RUN ./configure && make 
+RUN ./configure && make arch=intel64 -j$(nproc)
 
 FROM mpioperator/openmpi
 
@@ -34,8 +33,8 @@ RUN apt update && apt install -y \
     wget \
     build-essential \
     gcc \
-    libopenblas-dev 
-    # libopenmpi-dev
+    libopenblas-dev \
+    libopenmpi-dev
 
 
 COPY --from=builder /hpl /home/mpiuser/hpl
