@@ -1,3 +1,10 @@
+## [0.2.16](https://github.com/Crambor/hpl/compare/v0.2.15...v0.2.16) (2023-04-19)
+
+
+### Minor Changes
+
+* using mpi-operator v3.0 ([6dca91c](https://github.com/Crambor/hpl/commit/6dca91c989151ac07e1affc32be90963dbc76bb5))
+
 ## [0.2.15](https://github.com/Crambor/hpl/compare/v0.2.14...v0.2.15) (2023-04-19)
 
 
