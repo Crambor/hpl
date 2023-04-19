@@ -22,9 +22,10 @@ RUN wget https://www.netlib.org/benchmark/hpl/hpl-2.3.tar.gz && \
 # compile HPL
 WORKDIR "hpl"
 
-COPY "Make.Linux_Intel64" .
+# COPY "Make.Linux_Intel64" .
 
-RUN ./configure && make arch=intel64 -j$(nproc)
+# RUN ./configure && make arch=intel64 -j$(nproc)
+RUN ./configure && make 
 
 FROM mpioperator/openmpi
 
