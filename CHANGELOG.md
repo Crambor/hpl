@@ -1,3 +1,10 @@
+## [0.2.12](https://github.com/Crambor/hpl/compare/v0.2.11...v0.2.12) (2023-04-19)
+
+
+### Minor Changes
+
+* Update Dockerfile ([6b47285](https://github.com/Crambor/hpl/commit/6b4728599a288cfc92dc2c50e0dbdaf9091fad0d))
+
 ## [0.2.11](https://github.com/Crambor/hpl/compare/v0.2.10...v0.2.11) (2023-04-19)
 
 
