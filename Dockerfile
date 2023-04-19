@@ -1,5 +1,5 @@
 
-FROM mpioperator/openmpi-builder as builder
+FROM mpioperator/openmpi-builder:0.3.0 as builder
 
 
 # set contextual labels
@@ -26,7 +26,7 @@ COPY "Make.Linux_Intel64" .
 
 RUN ./configure && make arch=intel64 -j$(nproc)
 
-FROM mpioperator/openmpi
+FROM mpioperator/openmpi:0.3.0
 
 # include dependencies
 RUN apt update && apt install -y \
